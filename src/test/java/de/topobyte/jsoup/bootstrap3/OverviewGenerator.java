@@ -44,6 +44,7 @@ import de.topobyte.jsoup.bootstrap3.components.ContextualType;
 import de.topobyte.jsoup.bootstrap3.components.Label;
 import de.topobyte.jsoup.bootstrap3.components.NavTabs;
 import de.topobyte.jsoup.bootstrap3.components.Panel;
+import de.topobyte.jsoup.bootstrap3.components.ResponsiveImage;
 import de.topobyte.jsoup.components.Div;
 import de.topobyte.jsoup.nodes.Element;
 
@@ -87,6 +88,8 @@ public class OverviewGenerator extends BaseGenerator
 		panels(div);
 
 		alerts(div);
+
+		div.ac(new ResponsiveImage("image.svg"));
 
 		Document doc = builder.getDocument();
 		System.out.println(doc);
