@@ -26,14 +26,16 @@ import org.jsoup.nodes.Node;
 
 import de.topobyte.jsoup.ElementBuilder;
 import de.topobyte.jsoup.bootstrap3.Bootstrap;
+import de.topobyte.jsoup.components.Div;
+import de.topobyte.jsoup.components.ListItem;
 import de.topobyte.jsoup.nodes.Element;
 
-public class Menu extends Element
+public class Menu extends Element<Menu>
 {
 
-	protected Element navbarHeader;
-	protected Element navMain;
-	protected Element navRight;
+	protected Element<?> navbarHeader;
+	protected Element<?> navMain;
+	protected Element<?> navRight;
 
 	public Menu()
 	{
@@ -45,16 +47,16 @@ public class Menu extends Element
 		super("nav");
 		addClass("navbar navbar-default");
 
-		Element container = ac(Bootstrap.container());
+		Element<?> container = ac(Bootstrap.container());
 
 		navbarHeader = container.ac(div("navbar-header"));
 
 		// Button
 
-		Element button = navbarHeader.ac(ElementBuilder.create("button", "type",
-				"button", "class", "navbar-toggle collapsed", "data-toggle",
-				"collapse", "data-target", "#" + idNavbar, "aria-expanded",
-				"false", "aria-controls", "navbar"));
+		Element<?> button = navbarHeader.ac(ElementBuilder.create("button",
+				"type", "button", "class", "navbar-toggle collapsed",
+				"data-toggle", "collapse", "data-target", "#" + idNavbar,
+				"aria-expanded", "false", "aria-controls", "navbar"));
 
 		button.appendChild(
 				span().addClass("sr-only").appendText("Toggle navigation"));
@@ -64,8 +66,8 @@ public class Menu extends Element
 
 		// Entries
 
-		Element entries = container.ac(div()
-				.addClass("collapse navbar-collapse").attr("id", idNavbar));
+		Div entries = container.ac(div().addClass("collapse navbar-collapse")
+				.attr("id", idNavbar));
 
 		navMain = entries.ac(ul().addClass("nav navbar-nav"));
 		navRight = entries.ac(ul().addClass("nav navbar-nav navbar-right"));
@@ -79,7 +81,7 @@ public class Menu extends Element
 
 	public void addMain(Node content, boolean active)
 	{
-		Element li = navMain.ac(li());
+		ListItem li = navMain.ac(li());
 		if (active) {
 			li.addClass("active");
 		}
@@ -88,7 +90,7 @@ public class Menu extends Element
 
 	public void addRight(Node content, boolean active)
 	{
-		Element li = navRight.ac(li());
+		ListItem li = navRight.ac(li());
 		if (active) {
 			li.addClass("active");
 		}

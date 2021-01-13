@@ -23,7 +23,7 @@ import de.topobyte.jsoup.nodes.Element;
 public class Bootstrap3
 {
 
-	public static void addCdnHeaders(Element head)
+	public static void addCdnHeaders(Element<?> head)
 	{
 		ElementUtil.appendFragmentHead(head,
 				"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");

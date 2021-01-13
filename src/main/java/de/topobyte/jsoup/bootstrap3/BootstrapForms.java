@@ -42,14 +42,14 @@ import de.topobyte.jsoup.nodes.Element;
 public class BootstrapForms
 {
 
-	public Group addGroup(Element form)
+	public Group addGroup(Element<?> form)
 	{
 		Div group = form.ac(HTML.div("form-group"));
 
 		return new Group(group, null, group);
 	}
 
-	public Group addGroup(Element form, String label)
+	public Group addGroup(Element<?> form, String label)
 	{
 		Div group = form.ac(HTML.div("form-group"));
 
@@ -59,7 +59,7 @@ public class BootstrapForms
 		return new Group(group, eLabel, group);
 	}
 
-	public InputGroup addInput(Element form, String name)
+	public InputGroup addInput(Element<?> form, String name)
 	{
 		Group group = addGroup(form);
 
@@ -70,7 +70,7 @@ public class BootstrapForms
 		return new InputGroup(group, input);
 	}
 
-	public InputGroup addInput(Element form, String name, String label)
+	public InputGroup addInput(Element<?> form, String name, String label)
 	{
 		Group group = addGroup(form, label);
 
@@ -81,7 +81,7 @@ public class BootstrapForms
 		return new InputGroup(group, input);
 	}
 
-	public ButtonGroup addSubmit(Element form, String buttonText)
+	public ButtonGroup addSubmit(Element<?> form, String buttonText)
 	{
 		Group group = addGroup(form);
 
@@ -94,13 +94,13 @@ public class BootstrapForms
 		return new ButtonGroup(group, button);
 	}
 
-	public SelectGroup addSelect(Element form, String name, String label,
+	public SelectGroup addSelect(Element<?> form, String name, String label,
 			List<String> names, List<String> values)
 	{
 		return addSelect(form, name, label, names, values, -1);
 	}
 
-	public SelectGroup addSelect(Element form, String name, String label,
+	public SelectGroup addSelect(Element<?> form, String name, String label,
 			List<String> names, List<String> values, int selectedIndex)
 	{
 		Group group = addGroup(form, label);
@@ -126,31 +126,31 @@ public class BootstrapForms
 		return new SelectGroup(group, select, options, map);
 	}
 
-	public RadioGroup addRadio(Element form, String name, String label,
+	public RadioGroup addRadio(Element<?> form, String name, String label,
 			List<String> names, List<String> values, boolean inline)
 	{
 		return addRadio(form, name, label, names, values, -1, null, inline);
 	}
 
-	public RadioGroup addRadio(Element form, String name, String label,
+	public RadioGroup addRadio(Element<?> form, String name, String label,
 			List<String> names, List<String> values, String onChange,
 			boolean inline)
 	{
 		return addRadio(form, name, label, names, values, -1, onChange, inline);
 	}
 
-	public RadioGroup addRadio(Element form, String name, String label,
+	public RadioGroup addRadio(Element<?> form, String name, String label,
 			List<String> names, List<String> values, int selectedIndex,
 			String onChange, boolean inline)
 	{
 		Group group = addGroup(form, label);
 
-		Element content = group.getContent().ac(HTML.div());
+		Element<?> content = group.getContent().ac(HTML.div());
 
 		List<Input> inputs = new ArrayList<>();
 		Map<String, Input> map = new HashMap<>();
 		for (int i = 0; i < names.size(); i++) {
-			Element c = content;
+			Element<?> c = content;
 			if (!inline) {
 				c = content.ac(HTML.div("radio"));
 			}
@@ -179,7 +179,7 @@ public class BootstrapForms
 		return new RadioGroup(group, inputs, map);
 	}
 
-	public Checkbox addCheckbox(Element form, String name, String label)
+	public Checkbox addCheckbox(Element<?> form, String name, String label)
 	{
 		Div checkbox = form.ac(HTML.div("checkbox"));
 
@@ -194,7 +194,7 @@ public class BootstrapForms
 		return new Checkbox(checkbox, boxLabel, input);
 	}
 
-	public InlineCheckbox addInlineCheckbox(Element element, String name,
+	public InlineCheckbox addInlineCheckbox(Element<?> element, String name,
 			String label)
 	{
 		Label boxLabel = element.ac(HTML.label());
@@ -212,7 +212,7 @@ public class BootstrapForms
 	/**
 	 * Add an arbitrary element with a label to the form.
 	 */
-	public void addElement(Element form, String label, Element element)
+	public void addElement(Element<?> form, String label, Element<?> element)
 	{
 		Group group = addGroup(form, label);
 		group.getContent().ac(element);

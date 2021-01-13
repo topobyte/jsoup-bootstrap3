@@ -45,8 +45,10 @@ import de.topobyte.jsoup.bootstrap3.components.Label;
 import de.topobyte.jsoup.bootstrap3.components.NavTabs;
 import de.topobyte.jsoup.bootstrap3.components.Panel;
 import de.topobyte.jsoup.bootstrap3.components.ResponsiveImage;
+import de.topobyte.jsoup.components.A;
+import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Div;
-import de.topobyte.jsoup.nodes.Element;
+import de.topobyte.jsoup.components.P;
 
 public class OverviewGenerator extends BaseGenerator
 {
@@ -58,7 +60,7 @@ public class OverviewGenerator extends BaseGenerator
 	{
 		super.generate();
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Content
 
@@ -70,7 +72,7 @@ public class OverviewGenerator extends BaseGenerator
 
 		Div div = c.ac(div("foo"));
 
-		Element p = div.ac(p().inner("this is a paragraph in a div. "));
+		P p = div.ac(p().inner("this is a paragraph in a div. "));
 
 		System.out.println(p);
 		p.ap(b().inner("bold"));
@@ -110,7 +112,7 @@ public class OverviewGenerator extends BaseGenerator
 
 	private static void labels(Div div)
 	{
-		Element p = div.ac(p().inner("Another paragraph with some labels:"));
+		P p = div.ac(p().inner("Another paragraph with some labels:"));
 		p.ap(br());
 
 		List<Label.Type> types = Arrays.asList(Label.Type.values());
@@ -133,7 +135,7 @@ public class OverviewGenerator extends BaseGenerator
 		div.ac(navTabs.getElement());
 
 		for (int i = 1; i <= 5; i++) {
-			Element link = HTML.a("#").appendText("item " + i);
+			A link = HTML.a("#").appendText("item " + i);
 			navTabs.addItem(link, i == 2);
 		}
 	}

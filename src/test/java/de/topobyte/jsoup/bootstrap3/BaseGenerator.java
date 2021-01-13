@@ -27,7 +27,8 @@ import de.topobyte.jsoup.ElementUtil;
 import de.topobyte.jsoup.HTML;
 import de.topobyte.jsoup.HtmlBuilder;
 import de.topobyte.jsoup.bootstrap3.components.Menu;
-import de.topobyte.jsoup.nodes.Element;
+import de.topobyte.jsoup.components.Body;
+import de.topobyte.jsoup.components.Head;
 
 public class BaseGenerator
 {
@@ -36,7 +37,7 @@ public class BaseGenerator
 
 	public void generate() throws IOException
 	{
-		Element head = builder.getHead();
+		Head head = builder.getHead();
 
 		String header = IOUtils
 				.toString(Thread.currentThread().getContextClassLoader()
@@ -44,14 +45,14 @@ public class BaseGenerator
 		System.out.println(header);
 		ElementUtil.appendFragment(head, header);
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Menu
 
 		menu(body);
 	}
 
-	protected static void menu(Element body)
+	protected static void menu(Body body)
 	{
 		Menu menu = new Menu();
 		body.ap(menu);

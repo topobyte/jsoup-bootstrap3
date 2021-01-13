@@ -23,7 +23,7 @@ import de.topobyte.jsoup.nodes.Element;
 public class ContextualLists
 {
 
-	public static void setContext(Element element, ContextualType type)
+	public static void setContext(Element<?> element, ContextualType type)
 	{
 		switch (type) {
 		case SUCCESS:

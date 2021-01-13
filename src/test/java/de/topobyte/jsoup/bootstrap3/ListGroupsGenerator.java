@@ -29,8 +29,8 @@ import de.topobyte.jsoup.bootstrap3.components.Container;
 import de.topobyte.jsoup.bootstrap3.components.ContextualType;
 import de.topobyte.jsoup.bootstrap3.components.ListGroup;
 import de.topobyte.jsoup.bootstrap3.components.ListGroupDiv;
+import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.ListItem;
-import de.topobyte.jsoup.nodes.Element;
 
 public class ListGroupsGenerator extends BaseGenerator
 {
@@ -42,7 +42,7 @@ public class ListGroupsGenerator extends BaseGenerator
 	{
 		super.generate();
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Content
 
